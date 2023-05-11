@@ -60,7 +60,7 @@
             // to remove a cookie we have to set its expires parameter to a past date
             const signOut = ()=>{
             document.cookie = 'userName=; expires=-1'; 
-            document.cookie = "bookId=; expires=-1";
+            document.cookie = "userAuthenticationToken=; expires=-1";
             // location.reload();
             window.location.assign(
               "/"
