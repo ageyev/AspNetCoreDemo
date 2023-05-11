@@ -30,6 +30,5 @@ WantedBy=multi-user.target
 # 
 # to see app logs: 
 # sudo journalctl -fu aspnet-webapp.service 
-# or whis data range: 
+# or with data range: 
 # sudo journalctl -fu aspnet-webapp.service --since "2016-10-18" --until "2016-10-18 04:00" 
-
