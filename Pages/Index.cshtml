@@ -1,0 +1,84 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+
+    <div>
+        <p>@Model.Greeting</p>
+    </div>
+
+    @if (!Model.LoggedIn)
+    {
+        <div class="container" style="width: 60%">
+
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login</button>
+                    <button class="nav-link" id="nav-sign-up-tab" data-bs-toggle="tab" data-bs-target="#nav-signup" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Sign Up</button>
+                </div>
+            </nav>
+
+            <div class="tab-content" id="nav-tabContent">
+
+                <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <br/>
+                    <form method="post">
+                        <input type="hidden" id="formActionLogin" name="formAction" value="login">
+                        <label for="login-userName">Login:</label><br/>
+                        <input type="text" id="login-userName" name="userName" autocomplete="username" value="@Model.CurrentUser"><br>
+                        <label for="login-userPassword">Password:</label><br/>
+                        <input type="password" id="login-userPassword" name="userPassword" autocomplete="password"><br>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <br/>
+                    <form method="post">
+                        <input type="hidden" id="formActionSignup" name="formAction" value="signup">
+                        <label for="signup-userName">Choose login:</label><br/>
+                        <input type="text" id="signup-userName" name="userName" autocomplete="username"><br>
+                        <label for="signup-userPassword">Choose password:</label><br/>
+                        <input type="password" id="signup-userPassword" name="userPassword" autocomplete="new-password"><br/>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+    @if (Model.LoggedIn)
+    {
+        <script>
+            // to sign out we have to remove auth cookies
+            // to remove a cookie we have to set its expires parameter to a past date
+            const signOut = ()=>{
+            document.cookie = 'userName=; expires=-1'; 
+            document.cookie = "bookId=; expires=-1";
+            // location.reload();
+            window.location.assign(
+              "/"
+            );
+
+            }
+        
+        </script>
+        <button class="btn btn-primary"
+                onclick="signOut()">
+            Sign out
+        </button>
+    }
+
+
+
+
+
+
+
+</div>

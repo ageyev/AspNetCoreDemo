@@ -1,0 +1,27 @@
+#  /etc/nginx/sites-available/default 
+# see: 
+# https://saeidjoker.medium.com/step-by-step-guide-on-how-to-deploy-asp-net-6df22376332 
+# https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-7.0&tabs=linux-ubuntu 
+
+server {
+    listen        80;
+    server_name   aspnet-auth.dev-host.online;
+    location / {
+        proxy_pass         http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+
+## after you have to run certbot, to install ssl certificate and switch from http to https 
+## see: https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
+# sudo snap install core; sudo snap refresh core
+# sudo apt-get remove certbot 
+# sudo snap install --classic certbot 
+# sudo ln -s /snap/bin/certbot /usr/bin/certbot
+# sudo certbot --nginx

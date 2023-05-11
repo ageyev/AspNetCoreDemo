@@ -1,0 +1,14 @@
+{
+  "fox": {
+    "Password": "1234",
+    "UserAuthenticationToken": "kslnlzs0"
+  },
+  "wolf": {
+    "Password": "56789",
+    "UserAuthenticationToken": "kja8asdf"
+  },
+  "bear": {
+    "Password": "12345678",
+    "UserAuthenticationToken": "wfd1rqkx"
+  }
+}

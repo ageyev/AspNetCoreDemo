@@ -1,0 +1,35 @@
+# /etc/systemd/system/aspnet-webapp.service
+
+# see: 
+# https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx?view=aspnetcore-7.0&tabs=linux-ubuntu#create-the-service-file
+
+[Unit]
+Description= ASP.NET Core webapp on Linux with Nginx 
+
+[Service]
+WorkingDirectory=/home/ubuntu/asp-net-webapp
+ExecStart=/usr/bin/dotnet /home/ubuntu/asp-net-webapp/AspNetCoreDemo.dll 
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=dotnet-webapp
+User=ubuntu
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target 
+
+## on server: 
+# sudo cp aspnet-webapp.service /etc/systemd/system/aspnet-webapp.service 
+## to run service: 
+# sudo systemctl enable aspnet-webapp.service
+# sudo systemctl start aspnet-webapp.service
+# sudo systemctl status aspnet-webapp.service
+# 
+# to see app logs: 
+# sudo journalctl -fu aspnet-webapp.service 
+# or whis data range: 
+# sudo journalctl -fu aspnet-webapp.service --since "2016-10-18" --until "2016-10-18 04:00" 
+
