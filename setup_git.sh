@@ -14,4 +14,4 @@ git config --list --local
 # add remote repository
 # see: https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories
 # ls -laFh ~/.ssh/
-# ssh-add -D && ssh-add ~/.ssh/<private_key_for_git>
+ssh-add -D && ssh-add "$PRIVATE_KEY_FOR_GIT" 
