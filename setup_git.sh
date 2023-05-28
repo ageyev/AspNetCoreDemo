@@ -15,3 +15,6 @@ git config --list --local
 # see: https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories
 # ls -laFh ~/.ssh/
 ssh-add -D && ssh-add "$PRIVATE_KEY_FOR_GIT" 
+
+# add, push, commit: 
+# git rm -r --cached . && git add . && git commit -a -m 'update' && git push --all 
