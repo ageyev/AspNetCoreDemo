@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SshConfigs">
-    <configs>
-      <sshConfig host="aspnet-auth.dev-host.online" id="b3527536-74b5-4e1d-8b01-89f21f1e8a8e" keyPath="$USER_HOME$/.ssh/agbiz-aws.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" useOpenSSHConfig="true" />
-    </configs>
-  </component>
-</project>
